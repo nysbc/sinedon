@@ -2,7 +2,7 @@
 
 
 from django.db import models
-from ..models import SessionData
+from ..leginon import SessionData
 from ApCtfTiltParamsData import ApCtfTiltParamsData
 from ApCtfFind4ParamsData import ApCtfFind4ParamsData
 from ApPathData import ApPathData

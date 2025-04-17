@@ -1,5 +1,5 @@
 from django.db import models
-from ..models import SessionData
+from ..leginon import SessionData
 
 class ApAssessmentRunData(models.Model):
 	def_id = models.AutoField(db_column="DEF_id", primary_key=True)

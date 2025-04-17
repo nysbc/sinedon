@@ -1,7 +1,7 @@
 
 
 from django.db import models
-from ..models import AcquisitionImageData
+from ..leginon import AcquisitionImageData
 from .ApAceRunData import ApAceRunData
 
 class ApCtfData(models.Model):

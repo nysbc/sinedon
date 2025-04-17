@@ -1,6 +1,6 @@
 from django.db import models
 from .ApPathData import ApPathData
-from ..models import SessionData
+from ..leginon import SessionData
 
 class ApAppionJobData(models.Model):
 	def_id = models.AutoField(db_column="DEF_id", primary_key=True)

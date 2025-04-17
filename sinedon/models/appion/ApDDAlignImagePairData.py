@@ -1,5 +1,5 @@
 from django.db import models
-from ..models import AcquisitionImageData
+from ..leginon import AcquisitionImageData
 from ApDDStackRunData import ApDDStackRunData
 
 class ApDDAlignImagePairData(models.Model):

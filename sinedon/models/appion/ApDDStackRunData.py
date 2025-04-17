@@ -1,5 +1,5 @@
 from django.db import models
-from ..models import SessionData
+from ..leginon import SessionData
 from ApDDStackParamsData import ApDDStackParamsData
 from ApPathData import ApPathData
 
