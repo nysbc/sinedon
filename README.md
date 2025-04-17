@@ -1,4 +1,4 @@
-WHAT IS SINEDON?
+# WHAT IS SINEDON?
 
 Sinedon is an object-relational mapping package written in the Python
 programming language.  The goal of Sinedon is to make it easy for a
@@ -17,32 +17,42 @@ also transparent to the Python programmer.  A query is done by creating a
 python instance with the known key-value pairs filled in.  The query will
 return a list of objects from the database that match the query object.
 
-INSTALLATION
+# INSTALLATION
 
-To install, run this as root:
-	python setup.py install
+To install, run this:
+
+```
+python setup.py install
+```
 
 See examples directory for some examples of how to use sinedon.
 
-Here is a brief introduction:
+# USAGE
 
-Config File:
+## Config File:
+
 Sinedon can be given default database connection parameters in a config
-file called sinedon.cfg which should be in your home directory or in the
+file called `sinedon.cfg` which should be in your home directory or in the
 current directory where you run your python script from.  See the example
-config file: examples/sinedon.cfg.
+config file: `examples/sinedon.cfg`.
 
-Defining Python classes that will map to database tables:
+## Defining Python classes that will map to database tables:
+
 You must create a Python module that will map to a MySQL database.
 In the module, you will define a class for each table in your database.
-These classes must be subclasses of sindedon.Data.  See examples/mydata1.py
-and examples/mydata2.py for an example of such a module.
+These classes must be subclasses of sindedon.Data.  See `examples/mydata1.py`
+and `examples/mydata2.py` for an example of such a module.
 
-Connecting to the database through Sinedon:
+## Connecting to the database through Sinedon:
+
 First, the database connection parameters must be configured, either through
-a config file as mentioned above, or at runtime using sinedon.setConfig().
-For example:  sinedon.setConfig('mymodule', host='myhost', passwd=...)
+a config file as mentioned above, or at runtime using `sinedon.setConfig()`.
+For example:  `sinedon.setConfig('mymodule', host='myhost', passwd=...)`
 will create a mapping between the module 'mymodule.py' and the database
 given by the connection parameters.
+
 Once the mapping is configured, you can connect as follows:
+
+```
 db = sinedon.getConnection('mymodule')
+```
