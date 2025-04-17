@@ -5,5 +5,5 @@ setup(
 	version='0.1',
 	description='Object relational mapping package for Python',
 	packages=['sinedon'],
-	package_dir={'sinedon': ''},
+	package_dir={'sinedon': 'sinedon'},
 )
