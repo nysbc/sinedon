@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2025 New York Structural Biology Center
+
 from .AcquisitionImageData import AcquisitionImageData
 from .CameraEMData import CameraEMData
 from .CorrectorPlanData import CorrectorPlanData
