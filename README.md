@@ -1,4 +1,4 @@
-# WHAT IS SINEDON?
+# What is Sinedon?
 
 Sinedon is an object-relational mapping package written in the Python
 programming language.  The goal of Sinedon is to make it easy for a
@@ -17,7 +17,7 @@ also transparent to the Python programmer.  A query is done by creating a
 python instance with the known key-value pairs filled in.  The query will
 return a list of objects from the database that match the query object.
 
-# INSTALLATION
+# Installation
 
 To install, run this:
 
@@ -27,23 +27,23 @@ python setup.py install
 
 See examples directory for some examples of how to use sinedon.
 
-# USAGE
+# Usage
 
-## Config File:
+## Config File
 
 Sinedon can be given default database connection parameters in a config
 file called `sinedon.cfg` which should be in your home directory or in the
 current directory where you run your python script from.  See the example
 config file: `examples/sinedon.cfg`.
 
-## Defining Python classes that will map to database tables:
+## Defining Python classes that will map to database tables
 
 You must create a Python module that will map to a MySQL database.
 In the module, you will define a class for each table in your database.
 These classes must be subclasses of sindedon.Data.  See `examples/mydata1.py`
 and `examples/mydata2.py` for an example of such a module.
 
-## Connecting to the database through Sinedon:
+## Connecting to the database through Sinedon
 
 First, the database connection parameters must be configured, either through
 a config file as mentioned above, or at runtime using `sinedon.setConfig()`.
