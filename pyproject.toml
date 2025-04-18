@@ -1,0 +1,27 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "sinedon"
+version = "4.0"
+readme = "README.md"
+description = "A set of Django models that conform to the Leginon and Appion data models."
+license = "Apache-2.0"
+authors = [
+	{ name = "John Pellman", email = "john+github@libjpel.so"}, 
+	{ name = "Cesar Mena"}, 
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: POSIX :: Linux",
+]
+dependencies = [
+  "django>=4.2.20",
+]
+requires-python = ">=3.9"
+
+[project.urls]
+Homepage = "https://github.com/nysbc/sinedon/"
+Issues = "https://github.com/nysbc/sinedon/issues"
