@@ -10,26 +10,20 @@ class ApDDAlignImagePairData(models.Model):
     def_timestamp = models.DateTimeField(
         db_column="DEF_timestamp", auto_now_add=True
     )
-    ref_acquisitionimagedata_source = models.ForeignKey(
-        AcquisitionImageData,
+    ref_acquisitionimagedata_source = models.IntegerField(
         db_column="REF|AcquisitionImageData|source",
         blank=True,
         null=True,
-        on_delete=models.DO_NOTHING,
     )
-    ref_acquisitionimagedata_result = models.ForeignKey(
-        AcquisitionImageData,
+    ref_acquisitionimagedata_result = models.IntegerField(
         db_column="REF|AcquisitionImageData|result",
         blank=True,
         null=True,
-        on_delete=models.DO_NOTHING,
     )
-    ref_apddstackrundata_ddstackrun = models.ForeignKey(
-        ApDDStackRunData,
+    ref_apddstackrundata_ddstackrun = models.IntegerField(
         db_column="REF|ApDDStackRunData|ddstackrun",
         blank=True,
         null=True,
-        on_delete=models.DO_NOTHING,
     )
     class Meta:
         managed = False

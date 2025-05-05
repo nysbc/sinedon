@@ -2,8 +2,6 @@
 # Copyright 2025 New York Structural Biology Center
 
 from django.db import models
-from ..leginon import AcquisitionImageData
-from ApDDStackRunData import ApDDStackRunData
 
 class ApDDFrameTrajectoryData(models.Model):
     '''
@@ -15,12 +13,10 @@ class ApDDFrameTrajectoryData(models.Model):
     def_timestamp = models.DateTimeField(
         db_column="DEF_timestamp", auto_now_add=True
     )
-    ref_acquisitionimagedata_image = models.ForeignKey(
-        AcquisitionImageData,
+    ref_acquisitionimagedata_image = models.IntegerField(
         db_column="REF|AcquisitionImageData|image",
         blank=True,
         null=True,
-        on_delete=models.DO_NOTHING,
     )
     # Technically a foreign key, but the table it refers to is never
     # populated and the entire column is filled with NULLs.
@@ -29,12 +25,10 @@ class ApDDFrameTrajectoryData(models.Model):
         blank=True,
         null=True
     )
-    ref_apddstackrundata_ddstackrun = models.ForeignKey(
-        ApDDStackRunData,
+    ref_apddstackrundata_ddstackrun = models.IntegerField(
         db_column="REF|ApDDStackRunData|ddstackrun",
         blank=True,
         null=True,
-        on_delete=models.DO_NOTHING,
     )
     #pixels relative to reference frame of the first 10 frames
     seq_pos_x = models.TextField(db_column="SEQ|pos_x", blank=True, null=True)
