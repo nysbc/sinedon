@@ -2,11 +2,11 @@
 # Copyright 2025 New York Structural Biology Center
 
 from django.db import models
-from .ScriptProgramName import ScriptProgramName
-from .ScriptUserName import ScriptUserName
-from .ScriptHostName import ScriptHostName
-from .ApPathData import ApPathData
-from .ApAppionJobData import ApAppionJobData
+# from .ScriptProgramName import ScriptProgramName
+# from .ScriptUserName import ScriptUserName
+# from .ScriptHostName import ScriptHostName
+# from .ApPathData import ApPathData
+# from .ApAppionJobData import ApAppionJobData
 
 class ScriptProgramRun(models.Model):
 	def_id = models.AutoField(db_column="DEF_id", primary_key=True)
@@ -15,47 +15,35 @@ class ScriptProgramRun(models.Model):
 	)
 	runname = models.TextField(blank=True,null=True)
 	revision = models.TextField(blank=True,null=True)
-	ref_scriptprogramname_progname = models.ForeignKey(
-		ScriptProgramName,
+	ref_scriptprogramname_progname = models.IntegerField(
 		db_column="REF|ScriptProgramName|progname",
 		blank=True,
 		null=True,
-		on_delete=models.DO_NOTHING,
 	)
-	ref_scriptusername_username = models.ForeignKey(
-		ScriptUserName,
+	ref_scriptusername_username = models.IntegerField(
 		db_column="REF|ScriptUserName|username",
 		blank=True,
 		null=True,
-		on_delete=models.DO_NOTHING,
 	)
-	ref_scripthostname_hostname = models.ForeignKey(
-		ScriptHostName,
+	ref_scripthostname_hostname = models.IntegerField(
 		db_column="REF|ScriptHostName|hostname",
 		blank=True,
 		null=True,
-		on_delete=models.DO_NOTHING,
 	)
-	ref_appathdata_rundir = models.ForeignKey(
-		ApPathData,
+	ref_appathdata_rundir = models.IntegerField(
 		db_column="REF|ApPathData|rundir",
 		blank=True,
 		null=True,
-		on_delete=models.DO_NOTHING,
 	)
-	ref_apappionjobdata_job= models.ForeignKey(
-		ApAppionJobData,
+	ref_apappionjobdata_job= models.IntegerField(
 		db_column="REF|ApAppionJobData|job",
 		blank=True,
 		null=True,
-		on_delete=models.DO_NOTHING,
 	)
-	ref_appathdata_appion_path = models.ForeignKey(
-		ApPathData,
+	ref_appathdata_appion_path = models.IntegerField(
 		db_column="REF|ApPathData|appion_path",
 		blank=True,
 		null=True,
-		on_delete=models.DO_NOTHING,
 	)
 	unixshell = models.TextField(blank=True,null=True)
 	class Meta:

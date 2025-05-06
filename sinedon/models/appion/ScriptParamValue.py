@@ -2,8 +2,8 @@
 # Copyright 2025 New York Structural Biology Center
 
 from django.db import models
-from .ScriptParamName import ScriptParamName
-from .ScriptProgramRun import ScriptProgramRun
+#from .ScriptParamName import ScriptParamName
+#from .ScriptProgramRun import ScriptProgramRun
 
 class ScriptParamValue(models.Model):
 	def_id = models.AutoField(db_column="DEF_id", primary_key=True)
@@ -13,19 +13,15 @@ class ScriptParamValue(models.Model):
 
 	value = models.TextField(blank=True,null=True)
 	usage = models.TextField(blank=True,null=True)
-	ref_scriptparamname_paramname = models.ForeignKey(
-		ScriptParamName,
+	ref_scriptparamname_paramname = models.IntegerField(
 		db_column="REF|ScriptParamName|paramname",
 		blank=True,
 		null=True,
-		on_delete=models.DO_NOTHING,
 	)
-	ref_scriptprogramrun_progrun = models.ForeignKey(
-		ScriptProgramRun,
+	ref_scriptprogramrun_progrun = models.IntegerField(
 		db_column="REF|ScriptProgramRun|progrun",
 		blank=True,
 		null=True,
-		on_delete=models.DO_NOTHING,
 	)
 
 	class Meta:
