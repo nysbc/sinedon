@@ -3,7 +3,7 @@
 
 from django.db import models
 from ..leginon import AcquisitionImageData
-from ApDDStackRunData import ApDDStackRunData
+from .ApDDStackRunData import ApDDStackRunData
 
 class ApDDAlignImagePairData(models.Model):
     def_id = models.AutoField(db_column="DEF_id", primary_key=True)

@@ -3,9 +3,9 @@
 
 from django.db import models
 from ..leginon import SessionData
-from ApCtfTiltParamsData import ApCtfTiltParamsData
-from ApCtfFind4ParamsData import ApCtfFind4ParamsData
-from ApPathData import ApPathData
+from .ApCtfTiltParamsData import ApCtfTiltParamsData
+from .ApCtfFind4ParamsData import ApCtfFind4ParamsData
+from .ApPathData import ApPathData
 
 class ApAceRunData(models.Model):
 	def_id = models.AutoField(db_column="DEF_id", primary_key=True)

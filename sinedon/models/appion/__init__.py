@@ -13,6 +13,7 @@ from .ApDDFrameTrajectoryData import ApDDFrameTrajectoryData
 from .ApDDStackParamsData import ApDDStackParamsData
 from .ApDDStackRunData import ApDDStackRunData
 from .ApPathData import ApPathData
+from .ApStackData import ApStackData
 from .ApSymmetryData import ApSymmetryData
 from .ScriptHostName import ScriptHostName
 from .ScriptParamName import ScriptParamName

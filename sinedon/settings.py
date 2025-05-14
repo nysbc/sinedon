@@ -21,11 +21,16 @@ SINEDON_CFG = ConfigParser()
 if not SINEDON_CFG.read(os.path.join(SINEDON_CFG_PATH,"sinedon.cfg")):
     raise RuntimeError("Unable to read Sinedon configuration file at %s" % os.path.join(SINEDON_CFG_PATH,"sinedon.cfg"))
 
+if "SINEDON_DB_OVERRIDE" in os.environ.keys():
+    DB_NAME=os.environ["SINEDON_DB_OVERRIDE"]
+else:
+    DB_NAME=SINEDON_CFG["leginondata"]["db"]
+
 try:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.mysql",
-            "NAME": SINEDON_CFG["leginondata"]["db"],
+            "NAME": DB_NAME,
             "USER": SINEDON_CFG["global"]["user"],
             "PASSWORD": SINEDON_CFG["global"]["passwd"],
             "HOST": SINEDON_CFG["global"]["host"],

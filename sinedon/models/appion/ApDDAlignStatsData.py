@@ -3,8 +3,8 @@
 
 from django.db import models
 from ..leginon import AcquisitionImageData
-from ApDDStackRunData import ApDDStackRunData
-from ApDDFrameTrajectoryData import ApDDFrameTrajectoryData
+from .ApDDStackRunData import ApDDStackRunData
+from .ApDDFrameTrajectoryData import ApDDFrameTrajectoryData
 
 class ApDDAlignStatsData(models.Model):
     def_id = models.AutoField(db_column="DEF_id", primary_key=True)
