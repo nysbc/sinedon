@@ -10,7 +10,8 @@ class ApDDStackParamsData(models.Model):
     )
     preset = models.TextField(blank=True,null=True)
     align = models.BooleanField(blank=True,null=True)
-    bin = models.IntegerField(blank=True,null=True)
+    # Don't want to override Python's built-in bin function by naming this field "bin".
+    binning = models.IntegerField(db_column="bin",blank=True,null=True)
     ref_apddstackrundata_unaligned_ddstackrun = models.IntegerField(
         db_column="REF|ApDDStackRunData|unaligned_ddstackrun",
         blank=True,
