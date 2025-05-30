@@ -2,35 +2,35 @@
 # Copyright 2024-2025 New York Structural Biology Center
 
 import os
-from configparser import ConfigParser
+from .setup import retrieveSecretKey, retrieveSinedonConfig, retrieveAppionDB
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-if "SINEDON_SECRET_KEY" not in os.environ.keys():
-    raise RuntimeError("SINEDON_SECRET_KEY is not defined as an environment variable.")
-SECRET_KEY=os.environ["SINEDON_SECRET_KEY"]
+SECRET_KEY = retrieveSecretKey()
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
-if "SINEDON_CFG_PATH" not in os.environ.keys():
-    raise RuntimeError("SINEDON_CFG_PATH is not defined as an environment variable.")
-SINEDON_CFG_PATH=os.environ["SINEDON_CFG_PATH"]
-    
-SINEDON_CFG = ConfigParser()
-if not SINEDON_CFG.read(os.path.join(SINEDON_CFG_PATH,"sinedon.cfg")):
-    raise RuntimeError("Unable to read Sinedon configuration file at %s" % os.path.join(SINEDON_CFG_PATH,"sinedon.cfg"))
+SINEDON_CFG = retrieveSinedonConfig()
 
-if "SINEDON_DB_OVERRIDE" in os.environ.keys():
-    DB_NAME=os.environ["SINEDON_DB_OVERRIDE"]
-else:
-    DB_NAME=SINEDON_CFG["leginondata"]["db"]
+APPION_DB = retrieveAppionDB()
+
+
 
 try:
     DATABASES = {
-        "default": {
+        "leginon": {
             "ENGINE": "django.db.backends.mysql",
-            "NAME": DB_NAME,
+            "NAME": SINEDON_CFG["leginondata"]["db"],
+            "USER": SINEDON_CFG["global"]["user"],
+            "PASSWORD": SINEDON_CFG["global"]["passwd"],
+            "HOST": SINEDON_CFG["global"]["host"],
+            "PORT": "3306",
+            "ATOMIC_REQUESTS": True,
+        },
+        "projects": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": SINEDON_CFG["projectdata"]["db"],
             "USER": SINEDON_CFG["global"]["user"],
             "PASSWORD": SINEDON_CFG["global"]["passwd"],
             "HOST": SINEDON_CFG["global"]["host"],
@@ -38,6 +38,19 @@ try:
             "ATOMIC_REQUESTS": True,
         },
     }
+    DATABASES["default"] = DATABASES["leginon"]
+    DATABASE_ROUTERS=["sinedon.routers.leginon.LeginonDBRouter", "sinedon.routers.projects.ProjectDBRouter"]
+    if APPION_DB:
+        DATABASES["appion"] = {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": APPION_DB,
+            "USER": SINEDON_CFG["global"]["user"],
+            "PASSWORD": SINEDON_CFG["global"]["passwd"],
+            "HOST": SINEDON_CFG["global"]["host"],
+            "PORT": "3306",
+            "ATOMIC_REQUESTS": True,
+        }
+        DATABASE_ROUTERS.append("sinedon.routers.appion.AppionDBRouter")
 except KeyError as e:
     raise RuntimeError("Sinedon Configuration does not define necessary fields.") from e
 

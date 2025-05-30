@@ -56,3 +56,10 @@ Once the mapping is configured, you can connect as follows:
 ```
 db = sinedon.getConnection('mymodule')
 ```
+
+## Adding a new database model/table to sinedon.
+
+1. Create the model in a new file under the appropriate location (e.g., `models/appion` for Appion DB tables, `models/leginon` for Leginon DB tables)
+2. Ensure that the Django `Meta` class is defined and that `db_table` is set.
+3. Add the model to the `__init__.py` file under `models/{appion,leginon,projects}`.
+4. Add the table name to the list of database table names in the appropriate router class under `routers/{appion,leginon,projects}`.
