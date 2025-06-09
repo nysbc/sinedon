@@ -4,7 +4,7 @@
 
 
 from django.db import models
-from ..leginon import AcquisitionImageData
+#from ..leginon import AcquisitionImageData
 from .ApAceRunData import ApAceRunData
 
 class ApCtfData(models.Model):
@@ -19,12 +19,10 @@ class ApCtfData(models.Model):
 		null=True,
 		on_delete=models.DO_NOTHING,
 	)
-	ref_acquisitionimagedata_image = models.ForeignKey(
-		AcquisitionImageData,
-		db_column="REF|AcquisitionImageData|image",
+	ref_acquisitionimagedata_image = models.IntegerField(
+		db_column="REF|leginondata|AcquisitionImageData|image",
 		blank=True,
 		null=True,
-		on_delete=models.DO_NOTHING,
 	)
 	# in millimeters
 	cs = models.FloatField(blank=True,null=True)  

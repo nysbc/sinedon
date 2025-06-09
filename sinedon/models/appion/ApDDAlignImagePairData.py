@@ -2,7 +2,7 @@
 # Copyright 2025 New York Structural Biology Center
 
 from django.db import models
-from ..leginon import AcquisitionImageData
+#from ..leginon import AcquisitionImageData
 from .ApDDStackRunData import ApDDStackRunData
 
 class ApDDAlignImagePairData(models.Model):

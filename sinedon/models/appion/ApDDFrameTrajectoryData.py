@@ -14,7 +14,7 @@ class ApDDFrameTrajectoryData(models.Model):
         db_column="DEF_timestamp", auto_now_add=True
     )
     ref_acquisitionimagedata_image = models.IntegerField(
-        db_column="REF|AcquisitionImageData|image",
+        db_column="REF|leginondata|AcquisitionImageData|image",
         blank=True,
         null=True,
     )

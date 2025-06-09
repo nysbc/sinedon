@@ -10,7 +10,7 @@ class ApAssessmentRunData(models.Model):
 		db_column="DEF_timestamp", auto_now_add=True
 	)
 	ref_sessiondata_session = models.IntegerField(
-		db_column="REF|SessionData|session",
+		db_column="REF|leginondata|SessionData|session",
 		blank=True,
 		null=True,
 	)

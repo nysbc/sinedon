@@ -13,7 +13,7 @@ class ApDDAlignStatsData(models.Model):
     )
     ref_acquisitionimagedata_image = models.ForeignKey(
         AcquisitionImageData,
-        db_column="REF|AcquisitionImageData|image",
+        db_column="REF|leginondata|AcquisitionImageData|image",
         blank=True,
         null=True,
         on_delete=models.DO_NOTHING,
