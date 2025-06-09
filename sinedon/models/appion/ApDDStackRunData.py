@@ -20,7 +20,7 @@ class ApDDStackRunData(models.Model):
         null=True,
     )
     ref_sessiondata_session = models.IntegerField(
-        db_column="REF|SessionData|session",
+        db_column="REF|leginondata|SessionData|session",
         blank=True,
         null=True,
     )

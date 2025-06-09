@@ -26,7 +26,7 @@ class SessionData(models.Model):
     ref_gridholderdata_holder = models.IntegerField(
         db_column="REF|GridHolderData|holder", blank=True, null=True
     )
-    # frame_path = models.TextField(db_column="frame path", blank=True, null=True)
+    frame_path = models.TextField(db_column="frame path", blank=True, null=True)
 
     def __str__(self):
         return self.name or "<no name>"

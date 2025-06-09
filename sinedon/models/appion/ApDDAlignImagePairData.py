@@ -11,12 +11,12 @@ class ApDDAlignImagePairData(models.Model):
         db_column="DEF_timestamp", auto_now_add=True
     )
     ref_acquisitionimagedata_source = models.IntegerField(
-        db_column="REF|AcquisitionImageData|source",
+        db_column="REF|leginondata|AcquisitionImageData|source",
         blank=True,
         null=True,
     )
     ref_acquisitionimagedata_result = models.IntegerField(
-        db_column="REF|AcquisitionImageData|result",
+        db_column="REF|leginondata|AcquisitionImageData|result",
         blank=True,
         null=True,
     )
