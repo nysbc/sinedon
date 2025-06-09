@@ -23,8 +23,8 @@ class LeginonDBRouter:
         return None
     def allow_relation(self, obj1, obj2, **hints):
         if (
-            obj1.model._meta.db_table in self.leginon_db_tables
-            or obj2.model._meta.db_table in self.leginon_db_tables
+            obj1._meta.db_table in self.leginon_db_tables
+            or obj2._meta.db_table in self.leginon_db_tables
         ):
             return True
         return None
