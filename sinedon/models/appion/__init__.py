@@ -3,6 +3,7 @@
 
 from .ApAceRunData import ApAceRunData
 from .ApAppionJobData import ApAppionJobData
+from .ApAssessmentData import ApAssessmentData
 from .ApAssessmentRunData import ApAssessmentRunData
 from .ApCtfData import ApCtfData
 from .ApCtfFind4ParamsData import ApCtfFind4ParamsData

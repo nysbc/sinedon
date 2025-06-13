@@ -4,6 +4,7 @@
 class AppionDBRouter:
     appiondb_db_tables = ["ApAceRunData",
                           "ApAppionJobData",
+                          "ApAssessmentData",
                           "ApAssessmentRunData",
                           "ApCtfData",
                           "ApCtfFind4ParamsData",

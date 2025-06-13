@@ -11,4 +11,5 @@ from .PresetData import PresetData
 from .ScopeEMData import ScopeEMData
 from .SessionData import SessionData
 from .UserData import UserData
+from .ViewerImageStatus import ViewerImageStatus
 from .ZeroLossIceThicknessData import ZeroLossIceThicknessData

@@ -12,6 +12,7 @@ class LeginonDBRouter:
                          "ScopeEMData",
                          "SessionData",
                          "UserData",
+                         "ViewerImageStatus",
                          "ZeroLossIceThicknessData"]
     def db_for_read(self, model, **hints):
         if model._meta.db_table in self.leginon_db_tables:
