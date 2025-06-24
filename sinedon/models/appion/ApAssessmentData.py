@@ -22,8 +22,6 @@ class ApAssessmentData(models.Model):
 		null=True,
 	)
 	selectionkeep = models.IntegerField(blank=True, null=True)
-	
-	name = models.TextField(blank=True,null=True)
 	class Meta:
 		managed = False
 		verbose_name = "ApAssessmentData"
