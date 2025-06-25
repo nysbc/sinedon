@@ -15,8 +15,6 @@ SINEDON_CFG = retrieveSinedonConfig()
 
 APPION_DB = retrieveAppionDB()
 
-
-
 try:
     DATABASES = {
         "leginon": {

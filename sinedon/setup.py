@@ -39,11 +39,18 @@ def retrieveSecretKey():
 
 def retrieveSinedonConfig():
     if "SINEDON_CFG_PATH" not in os.environ.keys():
-        raise RuntimeError("SINEDON_CFG_PATH is not defined as an environment variable.")
-    SINEDON_CFG_PATH=os.environ["SINEDON_CFG_PATH"]
+        if "HOME" in os.environ.keys():
+            SINEDON_CFG_PATH=os.environ["HOME"]
+        else:
+            raise RuntimeError("SINEDON_CFG_PATH not defined as an environment variable and could not determine path to home directory.")
+    else:
+        SINEDON_CFG_PATH=os.environ["SINEDON_CFG_PATH"]
         
+    SINEDON_PATH=os.path.join(SINEDON_CFG_PATH,"sinedon.cfg")
+    if not os.path.exists(SINEDON_PATH):
+        raise FileExistsError("Sinedon configuration file at %s does not exist." % SINEDON_PATH)
     SINEDON_CFG = ConfigParser()
-    if not SINEDON_CFG.read(os.path.join(SINEDON_CFG_PATH,"sinedon.cfg")):
+    if not SINEDON_CFG.read(SINEDON_PATH):
         raise RuntimeError("Unable to read Sinedon configuration file at %s" % os.path.join(SINEDON_CFG_PATH,"sinedon.cfg"))
     return SINEDON_CFG
 
