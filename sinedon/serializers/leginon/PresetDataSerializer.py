@@ -5,7 +5,7 @@ from rest_framework import serializers
 class PresetDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = PresetData
-        fields = [field.name for field in PresetData._meta.get_fields()]
+        fields = [field.name for field in PresetData._meta.get_fields() if not field.auto_created]
         # Ideally we would use django-rest-framework's built-in validators, but for 
         # some reason the UniqueTogetherValidator sometimes returns True
         # even if there is an already existing record with the same values.
