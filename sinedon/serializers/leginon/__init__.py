@@ -1,1 +1,2 @@
+from .CameraEMDataSerializer import CameraEMDataSerializer
 from .PresetDataSerializer import PresetDataSerializer
