@@ -7,9 +7,9 @@ def get(model_name : str, data : dict = {}):
     serializer=_getSerializer(model_name)
     if not serializer:
         raise RuntimeError("No serializer exists for model named %s." % model_name)
-    try:
-        record=model.object.get(**data)
-    except Exception:
-        return {}
+    #try:
+    record=model.objects.get(**data)
+    #except Exception:
+    #    return {}
     ser=serializer(record)
     return ser.data
