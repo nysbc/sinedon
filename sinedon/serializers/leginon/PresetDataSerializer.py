@@ -1,6 +1,6 @@
 from ...models.leginon import PresetData
 from rest_framework import serializers
-from rest_framework.validators import UniqueTogetherValidator
+#from rest_framework.validators import UniqueTogetherValidator
 
 class PresetDataSerializer(serializers.ModelSerializer):
     class Meta:
