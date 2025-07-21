@@ -1,6 +1,6 @@
 from .private import _getModel, _getSerializer
 
-def get(model_name : str, def_id : int):
+def get(model_name : str, data : dict = {}):
     model=_getModel(model_name)
     if not model:
         raise RuntimeError("No model exists with name %s." % model_name)
@@ -8,8 +8,8 @@ def get(model_name : str, def_id : int):
     if not serializer:
         raise RuntimeError("No serializer exists for model named %s." % model_name)
     try:
-        record=model.objects.get(def_id=def_id)
-    except Exception as e:
-        raise RuntimeError("Could not retrieve row for %d." % def_id) from e
+        record=model.object.get(**data)
+    except Exception:
+        return {}
     ser=serializer(record)
     return ser.data
