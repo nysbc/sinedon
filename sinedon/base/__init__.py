@@ -1,2 +1,2 @@
-from .get import get
+from .get import get, filter
 from .set import set
