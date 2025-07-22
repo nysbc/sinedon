@@ -11,7 +11,7 @@ def get(model_name : str, data : dict = {}):
     try:
         record=model.objects.get(**data)
     except model.MultipleObjectsReturned:
-        record=model.objects.filter(**data).order_by(F("def_timestamp").desc())[-1]
+        record=model.objects.filter(**data).order_by(F("def_timestamp").desc())[0]
     except model.DoesNotExist:
         return {}
     ser=serializer(record)
