@@ -18,5 +18,5 @@ def set(model_name : str, data : dict) -> bool:
     if not queryset:
         deser.is_valid()
         deser.save()
-        return True
+        return deser.data
     return False
