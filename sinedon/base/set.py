@@ -22,3 +22,18 @@ def set(model_name : str, data : dict) -> bool:
         return deser.data
     else:
         return get(model_name, filtered_data)
+    
+def update(model_name : str, data : dict) -> bool:
+    model=_getModel(model_name)
+    if not model:
+        raise RuntimeError("No model exists with name %s." % model_name)
+    try:
+        record = model.objects.get(def_id=data["def_id"])
+    except model.MultipleObjectsReturned:
+        return False
+    except model.DoesNotExist:
+        return False
+    for field in data.keys():
+        setattr(record, field, data[field])
+    record.save()
+    return True

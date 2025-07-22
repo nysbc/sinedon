@@ -1,2 +1,2 @@
 from .get import get, filter
-from .set import set
+from .set import set, update
