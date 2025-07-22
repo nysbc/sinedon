@@ -1,4 +1,5 @@
 from .private import _getSerializer, _getModel
+from .get import get
 
 def set(model_name : str, data : dict) -> bool:
     model=_getModel(model_name)
@@ -19,4 +20,5 @@ def set(model_name : str, data : dict) -> bool:
         deser.is_valid()
         deser.save()
         return deser.data
-    return False
+    else:
+        return get(model_name, filtered_data)
