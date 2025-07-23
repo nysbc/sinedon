@@ -15,7 +15,8 @@ def get(model_name : str, data : dict = {}):
     except model.DoesNotExist:
         return {}
     ser=serializer(record)
-    return ser.data
+    data={k : v for k, v in ser.data.items() if v is not None}
+    return data
 
 def filter(model_name : str, data : dict = {}):
     model=_getModel(model_name)
