@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "sinedon"
-version = "4.0"
+version = "2025.07.23"
 readme = "README.md"
 description = "A set of Django models that conform to the Leginon and Appion data models."
 license = "Apache-2.0"
