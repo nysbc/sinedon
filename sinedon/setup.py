@@ -6,14 +6,15 @@ import os
 from configparser import ConfigParser
 import MySQLdb
 
-def setup(projectid=None):
+def setup(projectid=None, init=True):
     if projectid:
         sinedon_cfg=retrieveSinedonConfig()
         appiondb=retrieveAppionDBName(projectid, sinedon_cfg)
         if appiondb:
             os.environ["APPION_DB"]=appiondb
-            initializeAppionDB(appiondb, sinedon_cfg)
-            initializeAppionTables(appiondb, sinedon_cfg)
+            if init:
+                initializeAppionDB(appiondb, sinedon_cfg)
+                initializeAppionTables(appiondb, sinedon_cfg)
     django.setup()
 
 # Appion database is initialized by myamiweb / web viewer.
