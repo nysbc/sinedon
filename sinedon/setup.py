@@ -15,6 +15,24 @@ def setup(projectid=None, init=True):
             if init:
                 initializeAppionDB(appiondb, sinedon_cfg)
                 initializeAppionTables(appiondb, sinedon_cfg)
+                apddstackparamsdata_fields={'preset' : 'text', 
+                                            'align' : "tinyint(1) DEFAULT '0'",
+                                            'bin' : 'int DEFAULT NULL',
+                                            'REF|ApDDStackRunData|unaligned_ddstackrun' : 'int DEFAULT NULL',
+                                            'REF|ApStackData|stack' : 'int DEFAULT NULL',
+                                            'method' : 'text',
+                                            'REF|ApDEAlignerParamsData|de_aligner' : 'int DEFAULT NULL'}
+                apddstackparamsdata_keys={'REF|ApDDStackRunData|unaligned_ddstackrun'  : "KEY 'REF|ApDDStackRunData|unaligned_ddstackrun' ('REF|ApDDStackRunData|unaligned_ddstackrun')",
+                                          'REF|ApStackData|stack' : "KEY 'REF|ApStackData|stack' ('REF|ApStackData|stack')",
+                                          'REF|ApDEAlignerParamsData|de_aligner' : "KEY 'REF|ApDEAlignerParamsData|de_aligner' ('REF|ApDEAlignerParamsData|de_aligner')"}
+                for field in apddstackparamsdata_fields.keys():
+                    fieldexists=columnExists(appiondb, sinedon_cfg, "ApDDStackParamsData", field)
+                    if not fieldexists:
+                        columndefine=apddstackparamsdata_fields[field]
+                        # Not valid SQL
+                        #if field in apddstackparamsdata_keys.keys():
+                        #    columndefine+=" " + apddstackparamsdata_keys[field]
+                        addColumn(appiondb, sinedon_cfg, "ApDDStackParamsData", field, columndefine)
     django.setup()
 
 # Appion database is initialized by myamiweb / web viewer.
@@ -36,6 +54,39 @@ def retrieveAppionDBName(projectid, sinedon_cfg):
         if q_resultset[0]:
             app_db=str(q_resultset[0])
     return app_db
+
+def columnExists(app_db, sinedon_cfg, table, column):
+    """
+    check if column exists
+    """
+    if not sinedon_cfg or not app_db or not table or not column:
+        return None
+    db=MySQLdb.connect(host=sinedon_cfg["global"]["host"],
+                    user=sinedon_cfg["global"]["user"],
+                    password=sinedon_cfg["global"]["passwd"],
+                    port=3306,
+                    database=app_db)
+    c=db.cursor()
+    c.execute("SHOW COLUMNS FROM `%s` WHERE Field='%s';" % (table, column))
+    c.close()
+    db.close()
+    return True if int(c.rowcount) > 0 else False
+
+def addColumn(app_db, sinedon_cfg, table, column, columndefine):
+    """
+    add a column to a table
+    """
+    if not sinedon_cfg or not app_db or not table or not column or not columndefine:
+        return None
+    db=MySQLdb.connect(host=sinedon_cfg["global"]["host"],
+                    user=sinedon_cfg["global"]["user"],
+                    password=sinedon_cfg["global"]["passwd"],
+                    port=3306,
+                    database=app_db)
+    c=db.cursor()
+    c.execute("ALTER TABLE `%s` ADD COLUMN `%s` %s;" % (table, column, columndefine))
+    c.close()
+    db.close()
 
 def initializeAppionTables(app_db, sinedon_cfg):
     app_db_create_cmds = ["CREATE TABLE IF NOT EXISTS `ApAceRunData` (  `DEF_id` int NOT NULL AUTO_INCREMENT,  `DEF_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  `REF|ApAceParamsData|aceparams` int DEFAULT NULL,  `REF|ApCtfTiltParamsData|ctftilt_params` int DEFAULT NULL,  `REF|ApAce2ParamsData|ace2_params` int DEFAULT NULL,  `REF|leginondata|SessionData|session` int DEFAULT NULL,  `REF|ApPathData|path` int DEFAULT NULL,  `name` text,  `hidden` tinyint(1) DEFAULT '0',  `REF|ApXmippCtfParamsData|xmipp_ctf_params` int DEFAULT NULL,  `REF|ApCtfFind4ParamsData|ctffind4_params` int DEFAULT NULL,  `transferred` tinyint(1) DEFAULT '0',  `REF|ApAceTransferParamsData|transfer_params` int DEFAULT NULL,  PRIMARY KEY (`DEF_id`),  KEY `DEF_timestamp` (`DEF_timestamp`),  KEY `REF|ApAceParamsData|aceparams` (`REF|ApAceParamsData|aceparams`),  KEY `REF|ApCtfTiltParamsData|ctftilt_params` (`REF|ApCtfTiltParamsData|ctftilt_params`),  KEY `REF|ApAce2ParamsData|ace2_params` (`REF|ApAce2ParamsData|ace2_params`),  KEY `REF|leginondata|SessionData|session` (`REF|leginondata|SessionData|session`),  KEY `REF|ApPathData|path` (`REF|ApPathData|path`),  KEY `hidden` (`hidden`),  KEY `REF|ApXmippCtfParamsData|xmipp_ctf_params` (`REF|ApXmippCtfParamsData|xmipp_ctf_params`),  KEY `REF|ApCtfFind4ParamsData|ctffind4_params` (`REF|ApCtfFind4ParamsData|ctffind4_params`),  KEY `REF|ApAceTransferParamsData|transfer_params` (`REF|ApAceTransferParamsData|transfer_params`))", 
