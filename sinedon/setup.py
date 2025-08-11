@@ -13,7 +13,7 @@ def setup(projectid=None, init=True):
         if appiondb:
             os.environ["APPION_DB"]=appiondb
             if init:
-                initializeAppionDB(appiondb, sinedon_cfg)
+                #initializeAppionDB(appiondb, sinedon_cfg)
                 initializeAppionTables(appiondb, sinedon_cfg)
                 apddstackparamsdata_fields={'preset' : 'text', 
                                             'align' : "tinyint(1) DEFAULT '0'",
