@@ -2,7 +2,8 @@
 # Copyright 2025 New York Structural Biology Center
     
 class ProjectDBRouter:
-    project_db_tables = ["processingdb","projects"]
+    project_db_tables = ["autohosts","processingdb","projectexperiments","projectowners",
+                         "projects", "shareexperiments", "userdetails"]
     def db_for_read(self, model, **hints):
         if model._meta.db_table in self.project_db_tables:
             return "projects"
