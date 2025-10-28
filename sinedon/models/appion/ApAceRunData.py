@@ -2,7 +2,7 @@
 # Copyright 2025 New York Structural Biology Center
 
 from django.db import models
-from ..leginon import SessionData
+#from ..leginon import SessionData
 from .ApCtfTiltParamsData import ApCtfTiltParamsData
 from .ApCtfFind4ParamsData import ApCtfFind4ParamsData
 from .ApPathData import ApPathData
@@ -52,8 +52,7 @@ class ApAceRunData(models.Model):
 		blank=True,
 		null=True
 	)
-	ref_sessiondata_session = models.ForeignKey(
-		SessionData,
+	ref_sessiondata_session = models.IntegerField(
 		db_column="REF|SessionData|session",
 		blank=True,
 		null=True,
