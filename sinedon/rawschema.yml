@@ -1,0 +1,388 @@
+- table_name: ApAceRunData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'REF|ApAceParamsData|aceparams' : 'int DEFAULT NULL'
+    'REF|ApCtfTiltParamsData|ctftilt_params' : 'int DEFAULT NULL'
+    'REF|ApAce2ParamsData|ace2_params' : 'int DEFAULT NULL'
+    'REF|leginondata|SessionData|session' : 'int DEFAULT NULL'
+    'REF|ApPathData|path' : 'int DEFAULT NULL'
+    'name' : 'text'
+    'hidden' : "tinyint(1) DEFAULT '0'"
+    'REF|ApXmippCtfParamsData|xmipp_ctf_params' : 'int DEFAULT NULL'
+    'REF|ApCtfFind4ParamsData|ctffind4_params' : 'int DEFAULT NULL'
+    'transferred' : "tinyint(1) DEFAULT '0'"
+    'REF|ApAceTransferParamsData|transfer_params' : 'int DEFAULT NULL'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|ApAceParamsData|aceparams' ('REF|ApAceParamsData|aceparams')"
+    - "KEY 'REF|ApCtfTiltParamsData|ctftilt_params' ('REF|ApCtfTiltParamsData|ctftilt_params')"
+    - "KEY 'REF|ApAce2ParamsData|ace2_params' ('REF|ApAce2ParamsData|ace2_params')"
+    - "KEY 'REF|leginondata|SessionData|session' ('REF|leginondata|SessionData|session')"
+    - "KEY 'REF|ApPathData|path' ('REF|ApPathData|path')"
+    - "KEY 'hidden' ('hidden')"
+    - "KEY 'REF|ApXmippCtfParamsData|xmipp_ctf_params' ('REF|ApXmippCtfParamsData|xmipp_ctf_params')"
+    - "KEY 'REF|ApCtfFind4ParamsData|ctffind4_params' ('REF|ApCtfFind4ParamsData|ctffind4_params')"
+    - "KEY 'REF|ApAceTransferParamsData|transfer_params' ('REF|ApAceTransferParamsData|transfer_params')"
+
+- table_name: ApAppionJobData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'REF|ApPathData|path' : 'int DEFAULT NULL'
+    'name' : 'text'
+    'jobtype' : 'text'
+    'REF|ApPathData|dmfpath' : 'int DEFAULT NULL'
+    'REF|ApPathData|clusterpath' : 'int DEFAULT NULL'
+    'REF|leginondata|SessionData|session' : 'int DEFAULT NULL'
+    'cluster' : 'text'
+    'clusterjobid' : 'int DEFAULT NULL'
+    'status' : 'varchar(1) DEFAULT NULL'
+    'user' : 'text'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|ApPathData|clusterpath' ('REF|ApPathData|clusterpath')"
+    - "KEY 'REF|leginondata|SessionData|session' ('REF|leginondata|SessionData|session')"
+    - "KEY 'REF|ApPathData|dmfpath' ('REF|ApPathData|dmfpath')"
+    - "KEY 'clusterjobid' ('clusterjobid')"
+    - "KEY 'status' ('status')"
+    - "KEY 'jobtype_10' ('jobtype'(10)"
+
+- table_name: ApAssessmentData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'REF|ApAssessmentRunData|assessmentrun' : 'int DEFAULT NULL'
+    'REF|leginondata|AcquisitionImageData|image' : 'int DEFAULT NULL'
+    'selectionkeep' : 'int DEFAULT NULL'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|ApAssessmentRunData|assessmentrun' ('REF|ApAssessmentRunData|assessmentrun')"
+    - "KEY 'REF|leginondata|AcquisitionImageData|image' ('REF|leginondata|AcquisitionImageData|image')"
+
+- table_name: ApAssessmentRunData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'REF|leginondata|SessionData|session' : 'int DEFAULT NULL'
+    'name' : 'text'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|leginondata|SessionData|session' ('REF|leginondata|SessionData|session')"
+
+- table_name: ApCtfData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'REF|ApAceRunData|acerun' : 'int DEFAULT NULL'
+    'REF|leginondata|AcquisitionImageData|image' : 'int DEFAULT NULL'
+    'defocus1' : 'double DEFAULT NULL'
+    'defocus2' : 'double DEFAULT NULL'
+    'defocusinit' : 'double DEFAULT NULL'
+    'amplitude_contrast' : 'double DEFAULT NULL'
+    'angle_astigmatism' : 'double DEFAULT NULL'
+    'tilt_angle' : 'double DEFAULT NULL'
+    'tilt_axis_angle' : 'double DEFAULT NULL'
+    'snr' : 'double DEFAULT NULL'
+    'confidence' : 'double DEFAULT NULL'
+    'confidence_d' : 'double DEFAULT NULL'
+    'graph1' : 'text'
+    'graph2' : 'text'
+    'mat_file' : 'text'
+    'cross_correlation' : 'double DEFAULT NULL'
+    'ctfvalues_file' : 'text'
+    'cs' : 'double DEFAULT NULL'
+    'noise1' : 'double DEFAULT NULL'
+    'noise2' : 'double DEFAULT NULL'
+    'noise3' : 'double DEFAULT NULL'
+    'noise4' : 'double DEFAULT NULL'
+    'envelope1' : 'double DEFAULT NULL'
+    'envelope2' : 'double DEFAULT NULL'
+    'envelope3' : 'double DEFAULT NULL'
+    'envelope4' : 'double DEFAULT NULL'
+    'lowercutoff' : 'double DEFAULT NULL'
+    'uppercutoff' : 'double DEFAULT NULL'
+    'ctffind4_resolution' : 'double DEFAULT NULL'
+    'confidence_30_10' : 'double DEFAULT NULL'
+    'confidence_5_peak' : 'double DEFAULT NULL'
+    'overfocus_conf_30_10' : 'double DEFAULT NULL'
+    'overfocus_conf_5_peak' : 'double DEFAULT NULL'
+    'resolution_80_percent' : 'double DEFAULT NULL'
+    'resolution_50_percent' : 'double DEFAULT NULL'
+    'graph3' : 'text'
+    'graph4' : 'text'
+    'localplot' : 'text'
+    'localCTFstarfile' : 'text'
+    'extra_phase_shift' : 'double DEFAULT NULL'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|ApAceRunData|acerun' ('REF|ApAceRunData|acerun')"
+    - "KEY 'REF|leginondata|AcquisitionImageData|image' ('REF|leginondata|AcquisitionImageData|image')"
+
+- table_name: ApCtfFind4ParamsData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP'
+    'bestdb' : "tinyint(1) DEFAULT '0'"
+    'ampcontrast' : 'double DEFAULT NULL'
+    'fieldsize' : 'int DEFAULT NULL'
+    'cs' : 'double DEFAULT NULL'
+    'resmin' : 'double DEFAULT NULL'
+    'defstep' : 'double DEFAULT NULL'
+    'shift_phase' : "tinyint(1) DEFAULT '0'"
+    'min_phase_shift' : 'double DEFAULT NULL'
+    'max_phase_shift' : 'double DEFAULT NULL'
+    'phase_search_step' : 'double DEFAULT NULL'
+    'local_refine' : "tinyint(1) DEFAULT '0'"
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+
+- table_name: ApCtfTiltParamsData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'medium' : 'text'
+    'ampcarbon' : 'double DEFAULT NULL'
+    'ampice' : 'double DEFAULT NULL'
+    'fieldsize' : 'int DEFAULT NULL'
+    'cs' : 'double DEFAULT NULL'
+    'bin' : 'int DEFAULT NULL'
+    'resmin' : 'double DEFAULT NULL'
+    'resmax' : 'double DEFAULT NULL'
+    'defstep' : 'double DEFAULT NULL'
+    'dast' : 'double DEFAULT NULL'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+
+- table_name: ApDDAlignImagePairData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP'
+    'REF|leginondata|AcquisitionImageData|source' : 'int DEFAULT NULL'
+    'REF|leginondata|AcquisitionImageData|result' : 'int DEFAULT NULL'
+    'REF|ApDDStackRunData|ddstackrun' : 'int DEFAULT NULL'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|leginondata|AcquisitionImageData|source' ('REF|leginondata|AcquisitionImageData|source')"
+    - "KEY 'REF|leginondata|AcquisitionImageData|result' ('REF|leginondata|AcquisitionImageData|result')"
+    - "KEY 'REF|ApDDStackRunData|ddstackrun' ('REF|ApDDStackRunData|ddstackrun')"
+
+- table_name: ApDDAlignStatsData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP'
+    'REF|leginondata|AcquisitionImageData|image' : 'int DEFAULT NULL'
+    'REF|ApDDStackRunData|ddstackrun' : 'int DEFAULT NULL'
+    'REF|ApDDFrameTrajectoryData|trajectory' : 'int DEFAULT NULL'
+    'apix' : 'double DEFAULT NULL'
+    'top_shift1_value' : 'double DEFAULT NULL'
+    'top_shift2_value' : 'double DEFAULT NULL'
+    'top_shift3_value' : 'double DEFAULT NULL'
+    'top_shift1_index' : 'int DEFAULT NULL'
+    'top_shift2_index' : 'int DEFAULT NULL'
+    'top_shift3_index' : 'int DEFAULT NULL'
+    'median_shift_value' : 'double DEFAULT NULL'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|leginondata|AcquisitionImageData|image' ('REF|leginondata|AcquisitionImageData|image')"
+    - "KEY 'REF|ApDDStackRunData|ddstackrun' ('REF|ApDDStackRunData|ddstackrun')"
+    - "KEY 'REF|ApDDFrameTrajectoryData|trajectory' ('REF|ApDDFrameTrajectoryData|trajectory')"
+
+- table_name: ApDDFrameTrajectoryData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP'
+    'REF|leginondata|AcquisitionImageData|image' : 'int DEFAULT NULL'
+    'REF|ApStackParticleData|particle' : 'int DEFAULT NULL'
+    'REF|ApDDStackRunData|ddstackrun' : 'int DEFAULT NULL'
+    'SEQ|pos_x' : 'text'
+    'SEQ|pos_y' : 'text'
+    'last_x' : 'double DEFAULT NULL'
+    'last_y' : 'double DEFAULT NULL'
+    'number_of_positions' : 'int DEFAULT NULL'
+    'reference_index' : 'int DEFAULT NULL'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|leginondata|AcquisitionImageData|image' ('REF|leginondata|AcquisitionImageData|image')"
+    - "KEY 'REF|ApStackParticleData|particle' ('REF|ApStackParticleData|particle')"
+    - "KEY 'REF|ApDDStackRunData|ddstackrun' ('REF|ApDDStackRunData|ddstackrun')"
+
+- table_name: ApDDStackParamsData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'preset' : 'text'
+    'align' : "tinyint(1) DEFAULT '0'"
+    'bin' : 'int DEFAULT NULL'
+    'REF|ApDDStackRunData|unaligned_ddstackrun' : 'int DEFAULT NULL'
+    'REF|ApStackData|stack' : 'int DEFAULT NULL'
+    'method' : 'text'
+    'REF|ApDEAlignerParamsData|de_aligner' : 'int DEFAULT NULL'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|ApDDStackRunData|unaligned_ddstackrun' ('REF|ApDDStackRunData|unaligned_ddstackrun')"
+    - "KEY 'REF|ApStackData|stack' ('REF|ApStackData|stack')"
+    - "KEY 'REF|ApDEAlignerParamsData|de_aligner' ('REF|ApDEAlignerParamsData|de_aligner')"
+
+- table_name: ApDDStackRunData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'runname' : 'text'
+    'REF|ApDDStackParamsData|params' : 'int DEFAULT NULL'
+    'REF|leginondata|SessionData|session' : 'int DEFAULT NULL'
+    'REF|ApPathData|path' : 'int DEFAULT NULL'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|ApDDStackParamsData|params' ('REF|ApDDStackParamsData|params')"
+    - "KEY 'REF|leginondata|SessionData|session' ('REF|leginondata|SessionData|session')"
+    - "KEY 'REF|ApPathData|path' ('REF|ApPathData|path')"
+
+- table_name: ApPathData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'path' : 'text'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'path_index32' ('path'(32))"
+
+- table_name: ApStackData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'REF|ApPathData|path' : 'int DEFAULT NULL'
+    'name' : 'text'
+    'description' : 'text'
+    'hidden' : "tinyint(1) DEFAULT '0'"
+    'REF|ApStackData|oldstack' : 'int DEFAULT NULL'
+    'substackname' : 'text'
+    'pixelsize' : 'double DEFAULT NULL'
+    'centered' : "tinyint(1) DEFAULT '0'"
+    'junksorted' : "tinyint(1) DEFAULT '0'"
+    'beamtilt_corrected' : "tinyint(1) DEFAULT '0'"
+    'mask' : 'int DEFAULT NULL'
+    'maxshift' : 'int DEFAULT NULL'
+    'boxsize' : 'int DEFAULT NULL'
+    keys:
+      - "PRIMARY KEY ('DEF_id')"
+      - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+      - "KEY 'REF|ApPathData|path' ('REF|ApPathData|path')"
+      - "KEY 'hidden' ('hidden')"
+      - "KEY 'REF|ApStackData|oldstack' ('REF|ApStackData|oldstack')"
+      - "KEY 'centered' ('centered')"
+      - "KEY 'junksorted' ('junksorted')"
+      - "KEY 'beamtilt_corrected' ('beamtilt_corrected')"
+
+- table_name: ApSymmetryData
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'eman_name' : 'varchar(8) DEFAULT NULL'
+    'fold_symmetry' : 'int DEFAULT NULL'
+    'symmetry' : 'text'
+    'description' : 'text'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "UNIQUE KEY 'symmetry' ('symmetry'(12))"
+    - "KEY 'eman_name' ('eman_name')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+
+- table_name: ScriptHostName
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'name' : 'text'
+    'ip' : 'text'
+    'system' : 'text'
+    'distro' : 'text'
+    'arch' : 'text'
+    'nproc' : 'int DEFAULT NULL'
+    'memory' : 'int DEFAULT NULL'
+    'cpu_vendor' : 'text'
+    'gpu_vendor' : 'text'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+
+- table_name: ScriptParamName
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'name' : 'text'
+    'REF|ScriptProgramName|progname' : 'int DEFAULT NULL'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|ScriptProgramName|progname' ('REF|ScriptProgramName|progname')"
+
+- table_name: ScriptParamValue
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'value' : 'text'
+    'usage' : 'text'
+    'REF|ScriptParamName|paramname' : 'int DEFAULT NULL'
+    'REF|ScriptProgramRun|progrun' : 'int DEFAULT NULL'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|ScriptParamName|paramname' ('REF|ScriptParamName|paramname')"
+    - "KEY 'REF|ScriptProgramRun|progrun' ('REF|ScriptProgramRun|progrun')"
+
+- table_name: ScriptProgramName
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'name' : 'text'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+
+- table_name: ScriptProgramRun
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'runname' : 'text'
+    'revision' : 'text'
+    'REF|ScriptProgramName|progname' : 'int DEFAULT NULL'
+    'REF|ScriptUserName|username' : 'int DEFAULT NULL'
+    'REF|ScriptHostName|hostname' : 'int DEFAULT NULL'
+    'REF|ApPathData|rundir' : 'int DEFAULT NULL'
+    'REF|ApAppionJobData|job' : 'int DEFAULT NULL'
+    'REF|ApPathData|appion_path' : 'int DEFAULT NULL'
+    'unixshell' : 'text'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"
+    - "KEY 'REF|ScriptProgramName|progname' ('REF|ScriptProgramName|progname')"
+    - "KEY 'REF|ScriptUserName|username' ('REF|ScriptUserName|username')"
+    - "KEY 'REF|ScriptHostName|hostname' ('REF|ScriptHostName|hostname')"
+    - "KEY 'REF|ApPathData|rundir' ('REF|ApPathData|rundir')"
+    - "KEY 'REF|ApAppionJobData|job' ('REF|ApAppionJobData|job')"
+    - "KEY 'REF|ApPathData|appion_path' ('REF|ApPathData|appion_path')"
+
+- table_name: ScriptUserName
+  fields:
+    'DEF_id' : 'int NOT NULL AUTO_INCREMENT'
+    'DEF_timestamp' : 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+    'name' : 'text'
+    'uid' : 'int DEFAULT NULL'
+    'gid' : 'int DEFAULT NULL'
+    'fullname' : 'text'
+  keys:
+    - "PRIMARY KEY ('DEF_id')"
+    - "KEY 'DEF_timestamp' ('DEF_timestamp')"

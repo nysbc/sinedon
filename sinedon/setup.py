@@ -33,6 +33,64 @@ def setup(projectid=None, init=True):
                         #if field in apddstackparamsdata_keys.keys():
                         #    columndefine+=" " + apddstackparamsdata_keys[field]
                         addColumn(appiondb, sinedon_cfg, "ApDDStackParamsData", field, columndefine)
+                apacerundatafields = {
+                    "REF|ApAceParamsData|aceparams": "int(11) NULL",
+                    "REF|ApCtfTiltParamsData|ctftilt_params": "int(11) NULL",
+                    "REF|ApXmippCtfParamsData|xmipp_ctf_params": "int(11) NULL",
+                    "REF|ApAce2ParamsData|ace2_params": "int(11) NULL",
+                    "REF|ApCtfFind4ParamsData|ctffind4_params": "int(11) NULL",
+                    "transferred": "tinyint(1) NULL",
+                    "REF|ApAceTransferParamsData|transfer_params": "int(11) NULL",
+                    "REF|SessionData|session": "int(11) NULL",
+                    "REF|ApPathData|path": "int(11) NULL",
+                    "name": "text NULL",
+                    "hidden": "tinyint(1) NULL",
+                }
+
+                for field in apacerundatafields.keys():
+                    fieldexists=columnExists(appiondb, sinedon_cfg, "ApAceRunData", field)
+                    if not fieldexists:
+                        columndefine=apacerundatafields[field]
+                        addColumn(appiondb, sinedon_cfg, "ApAceRunData", field, columndefine)
+
+                apctfdatafields = {
+                    "REF|ApAceRunData|acerun": "int(11) NULL",
+                    "REF|leginondata|AcquisitionImageData|image": "int(11) NULL",
+                    "cs": "double NULL",
+                    "defocusinit": "double NULL",
+                    "amplitude_contrast": "double NULL",
+                    "defocus1": "double NULL",
+                    "defocus2": "double NULL",
+                    "angle_astigmatism": "double NULL",
+                    "ctffind4_resolution": "double NULL",
+                    "confidence": "double NULL",
+                    "confidence_d": "double NULL",
+                    "confidence_30_10": "double NULL",
+                    "confidence_5_peak": "double NULL",
+                    "overfocus_conf_30_10": "double NULL",
+                    "overfocus_conf_5_peak": "double NULL",
+                    "resolution_80_percent": "double NULL",
+                    "resolution_50_percent": "double NULL",
+                    "graph1": "text NULL",
+                    "graph2": "text NULL",
+                    "graph3": "text NULL",
+                    "graph4": "text NULL",
+                    "localplot": "text NULL",
+                    "localCTFstarfile": "text NULL",
+                    "ctfvalues_file": "text NULL",
+                    "cross_correlation": "double NULL",
+                    "tilt_angle": "double NULL",
+                    "tilt_axis_angle": "double NULL",
+                    "mat_file": "text NULL",
+                    "extra_phase_shift": "double NULL",
+                }
+
+                for field in apctfdatafields.keys():
+                    fieldexists=columnExists(appiondb, sinedon_cfg, "ApCtfData", field)
+                    if not fieldexists:
+                        columndefine=apctfdatafields[field]
+                        addColumn(appiondb, sinedon_cfg, "ApCtfData", field, columndefine)
+
     django.setup()
 
 # Appion database is initialized by myamiweb / web viewer.

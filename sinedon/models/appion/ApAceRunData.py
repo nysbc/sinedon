@@ -55,8 +55,7 @@ class ApAceRunData(models.Model):
 	ref_sessiondata_session = models.IntegerField(
 		db_column="REF|SessionData|session",
 		blank=True,
-		null=True,
-		on_delete=models.DO_NOTHING,
+		null=True
 	)
 	ref_appathdata_path = models.ForeignKey(
 		ApPathData,
