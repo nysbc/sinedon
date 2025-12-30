@@ -41,7 +41,7 @@ def setup(projectid=None, init=True):
                     "REF|ApCtfFind4ParamsData|ctffind4_params": "int(11) NULL",
                     "transferred": "tinyint(1) NULL",
                     "REF|ApAceTransferParamsData|transfer_params": "int(11) NULL",
-                    "REF|SessionData|session": "int(11) NULL",
+                    "REF|leginondata|SessionData|session": "int(11) NULL",
                     "REF|ApPathData|path": "int(11) NULL",
                     "name": "text NULL",
                     "hidden": "tinyint(1) NULL",
