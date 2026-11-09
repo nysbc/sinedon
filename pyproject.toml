@@ -18,7 +18,7 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
 ]
 dependencies = [
-  "django>=4.2.20",
+  "django>=4.2.20,<5.2.7",
   "mysqlclient",
   "djangorestframework"
 ]
